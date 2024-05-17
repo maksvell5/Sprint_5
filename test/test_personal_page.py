@@ -1,62 +1,64 @@
 from selenium import webdriver
 import pytest
 import time
-from locators import burgerLocators
+from locators import BurgerLocators
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions
 
 
-class personalPage:
+class TestpersonalPage:
 
-    def test_login_personal_page(self):
-        driver=webdriver.Chrome()
+    def test_login_personal_page(self, driver):
+        
         driver.get('https://stellarburgers.nomoreparties.site/login')
 
-        driver.find_element(*burgerLocators.EMAIL_FIALD_LOGIN).send_keys('eroninmax8001@yandex.ru')
-        driver.find_element(*burgerLocators.PASSWORD_FIALD_LOGIN).send_keys('123456')
-        driver.find_element(*burgerLocators.BUTTON_LOGIN).click()
-        time.sleep(2)
+        driver.find_element(*BurgerLocators.EMAIL_FIALD_LOGIN).send_keys('eroninmax8001@yandex.ru')
+        driver.find_element(*BurgerLocators.PASSWORD_FIALD_LOGIN).send_keys('123456')
+        driver.find_element(*BurgerLocators.BUTTON_LOGIN).click()
+        WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable((BurgerLocators.BUTTON_PERSONAL_PAGE)))
 
-        driver.find_element(*burgerLocators.BUTTON_PERSONAL_PAGE).click()
-        time.sleep(2)
+        driver.find_element(*BurgerLocators.BUTTON_PERSONAL_PAGE).click()
+        WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable((BurgerLocators.BUTTON_LOGOUT)))
 
-        assert driver.find_element(By.XPATH, '//*[@id="root"]/div/main/div/div/div/ul/li[1]/div/div/input').get_attribute('value') == 'maax'
-        assert driver.find_element(By.XPATH, '//*[@id="root"]/div/main/div/div/div/ul/li[2]/div/div/input').get_attribute('value') == 'eroninmax8001@yandex.ru'
+        assert driver.find_element(*BurgerLocators.PERSONAL_PAGE_LOGIN).get_attribute('value') == 'maax'
+        assert driver.find_element(*BurgerLocators.PERSONAL_PAGE_EMAIL).get_attribute('value') == 'eroninmax8001@yandex.ru'
         assert driver.current_url == 'https://stellarburgers.nomoreparties.site/account/profile'
 
-    def test_personal_page_click_constructor(self):
-        driver=webdriver.Chrome()
+    def test_personal_page_click_constructor(self, driver):
+        
         driver.get('https://stellarburgers.nomoreparties.site/login')
 
-        driver.find_element(*burgerLocators.EMAIL_FIALD_LOGIN).send_keys('eroninmax8001@yandex.ru')
-        driver.find_element(*burgerLocators.PASSWORD_FIALD_LOGIN).send_keys('123456')
-        driver.find_element(*burgerLocators.BUTTON_LOGIN).click()
-        time.sleep(2)
+        driver.find_element(*BurgerLocators.EMAIL_FIALD_LOGIN).send_keys('eroninmax8001@yandex.ru')
+        driver.find_element(*BurgerLocators.PASSWORD_FIALD_LOGIN).send_keys('123456')
+        driver.find_element(*BurgerLocators.BUTTON_LOGIN).click()
+        WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable((BurgerLocators.BUTTON_PERSONAL_PAGE)))
 
-        driver.find_element(*burgerLocators.BUTTON_PERSONAL_PAGE).click()
-        time.sleep(2)
-        driver.find_element(By.XPATH, '//*[@id="root"]/div/header/nav/ul/li[1]/a').click()
-        time.sleep(2)
+        driver.find_element(*BurgerLocators.BUTTON_PERSONAL_PAGE).click()
+        WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable((BurgerLocators.BUTTON_LOGOUT)))
+        driver.find_element(*BurgerLocators.CONSTRUCTOR_BUTTON).click()
+        WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable((BurgerLocators.BULKI)))
 
         assert driver.current_url == 'https://stellarburgers.nomoreparties.site/'
-        assert driver.find_element(By.XPATH, '//*[@id="root"]/div/main/section[1]/h1').text == 'Соберите бургер'
+        assert driver.find_element(*BurgerLocators.MAKE_BURGER).text == 'Соберите бургер'
 
 
-    def test_personal_page_click_stellar_burger(self):
-        driver=webdriver.Chrome()
+    def test_personal_page_click_stellar_burger(self, driver):
+        
         driver.get('https://stellarburgers.nomoreparties.site/login')
 
-        driver.find_element(*burgerLocators.EMAIL_FIALD_LOGIN).send_keys('eroninmax8001@yandex.ru')
-        driver.find_element(*burgerLocators.PASSWORD_FIALD_LOGIN).send_keys('123456')
-        driver.find_element(*burgerLocators.BUTTON_LOGIN).click()
-        time.sleep(2)
+        driver.find_element(*BurgerLocators.EMAIL_FIALD_LOGIN).send_keys('eroninmax8001@yandex.ru')
+        driver.find_element(*BurgerLocators.PASSWORD_FIALD_LOGIN).send_keys('123456')
+        driver.find_element(*BurgerLocators.BUTTON_LOGIN).click()
+        WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable((BurgerLocators.BUTTON_PERSONAL_PAGE)))
 
-        driver.find_element(*burgerLocators.BUTTON_PERSONAL_PAGE).click()
-        time.sleep(2)
-        driver.find_element(By.XPATH, '//*[@id="root"]/div/header/nav/div/a').click()
-        time.sleep(2)
+        driver.find_element(*BurgerLocators.BUTTON_PERSONAL_PAGE).click()
+        WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable((BurgerLocators.BUTTON_LOGOUT)))
+        driver.find_element(*BurgerLocators.STELLAR_BURGER).click()
+        WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable((BurgerLocators.BULKI)))
 
         assert driver.current_url == 'https://stellarburgers.nomoreparties.site/'
-        assert driver.find_element(By.XPATH, '//*[@id="root"]/div/main/section[1]/h1').text == 'Соберите бургер'
+        assert driver.find_element(*BurgerLocators.MAKE_BURGER).text == 'Соберите бургер'
 
 
         

@@ -1,27 +1,29 @@
 from selenium import webdriver
 import pytest
 import time
-from locators import burgerLocators
+from locators import BurgerLocators
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions
 
 
-class burgerLogout:
+class TestBurgerLogout:
 
-    def test_logout(self):
-        driver=webdriver.Chrome()
+    def test_logout(self, driver):
+        
         driver.get('https://stellarburgers.nomoreparties.site/login')
 
-        driver.find_element(*burgerLocators.EMAIL_FIALD_LOGIN).send_keys('eroninmax8001@yandex.ru')
-        driver.find_element(*burgerLocators.PASSWORD_FIALD_LOGIN).send_keys('123456')
-        driver.find_element(*burgerLocators.BUTTON_LOGIN).click()
-        time.sleep(2)
+        driver.find_element(*BurgerLocators.EMAIL_FIALD_LOGIN).send_keys('eroninmax8001@yandex.ru')
+        driver.find_element(*BurgerLocators.PASSWORD_FIALD_LOGIN).send_keys('123456')
+        driver.find_element(*BurgerLocators.BUTTON_LOGIN).click()
+        WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable((BurgerLocators.BUTTON_PERSONAL_PAGE)))
 
-        driver.find_element(*burgerLocators.BUTTON_PERSONAL_PAGE).click()
-        time.sleep(2)
+        driver.find_element(*BurgerLocators.BUTTON_PERSONAL_PAGE).click()
+        WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable((BurgerLocators.BUTTON_LOGOUT)))
 
-        driver.find_element(*burgerLocators.BUTTON_LOGOUT).click()
-        time.sleep(2)
+        driver.find_element(*BurgerLocators.BUTTON_LOGOUT).click()
+        WebDriverWait(driver, 3).until(expected_conditions.element_to_be_clickable((BurgerLocators.EMAIL_FIALD_LOGIN)))
 
         assert driver.current_url == 'https://stellarburgers.nomoreparties.site/login'
-        assert driver.find_element(By.XPATH, '//*[@id="root"]/div/main/div/h2').text == 'Вход'
+        assert driver.find_element(*BurgerLocators.BUTTON_LOGIN).text == 'Войти'
 

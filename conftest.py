@@ -11,5 +11,9 @@ def browser_settings():
 def driver():
     chrome = webdriver.Chrome(options=browser_settings())
     chrome.get('https://stellarburgers.nomoreparties.site')
+    yield chrome
+    chrome.quit
 
-    return chrome
+
+    
+
