@@ -8,7 +8,7 @@ class BurgerLocators:
     BUTTON_LOGIN_START_PAGE = (By.XPATH, '//button[@class="button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg"]')
     EMAIL_FIALD_LOGIN = (By.XPATH, '//input[@class="text input__textfield text_type_main-default"][@name="name"]')
     PASSWORD_FIALD_LOGIN = (By.XPATH, '//input[@class="text input__textfield text_type_main-default"][@name="Пароль"]')
-    BUTTON_LOGIN = (By.XPATH, '//button[@class="button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa"]')
+    BUTTON_LOGIN = (By.XPATH, '//button[@class="button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa"][text()="Войти"]')
     BUTTON_PERSONAL_PAGE = (By.XPATH, '//nav/a[@class="AppHeader_header__link__3D_hX"]')
     BUTTON_LOGOUT = (By.XPATH, '//button[@class="Account_button__14Yp3 text text_type_main-medium text_color_inactive"]')
     BULKI = (By.XPATH, '//span[text()="Булки"]/parent::div')
@@ -22,4 +22,6 @@ class BurgerLocators:
     CONSTRUCTOR_BUTTON = (By.XPATH, '//li/a[@class="AppHeader_header__link__3D_hX"][@href="/"]')
     MAKE_BURGER = (By.XPATH, '//h1[@class="text text_type_main-large mb-5 mt-10"]')
     STELLAR_BURGER = (By.XPATH, '//div[@class="AppHeader_header__logo__2D0X2"]')
+    UNCORRECT_PASSWORD = (By.XPATH, '//p[@class="input__error text_type_main-default"]')
+    UNCORRECT_EMAIL = (By.XPATH, '//p[@class="input__error text_type_main-default"]')
 

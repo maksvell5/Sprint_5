@@ -21,8 +21,8 @@ class TestBurgerRegistrationTest:
 
         button_registration = driver.find_element(*BurgerLocators.BUTTON_REGISTRATION).click()
 
-        assert driver.find_element(By.XPATH,'//*[@id="root"]/div/main/div/form/fieldset[3]/div/p').is_displayed()
-        assert driver.find_element(By.XPATH,'//*[@id="root"]/div/main/div/form/fieldset[3]/div/p').text == 'Некорректный пароль'
+        assert driver.find_element(*BurgerLocators.UNCORRECT_PASSWORD).is_displayed()
+        assert driver.find_element(*BurgerLocators.UNCORRECT_PASSWORD).text == 'Некорректный пароль'
 
 
     def test_name_fiald_empty(self, driver):
@@ -48,10 +48,10 @@ class TestBurgerRegistrationTest:
 
         button_registration = driver.find_element(*BurgerLocators.BUTTON_REGISTRATION).click()
 
-        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((By.XPATH,'//*[@id="root"]/div/main/div/p')))
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((BurgerLocators.UNCORRECT_EMAIL)))
 
-        assert driver.find_element(By.XPATH,'//*[@id="root"]/div/main/div/p').is_displayed()
-        assert driver.find_element(By.XPATH,'//*[@id="root"]/div/main/div/p').text == 'Такой пользователь уже существует'
+        assert driver.find_element(*BurgerLocators.UNCORRECT_EMAIL).is_displayed()
+        assert driver.find_element(*BurgerLocators.UNCORRECT_EMAIL).text == 'Такой пользователь уже существует'
 
         
 
@@ -71,7 +71,7 @@ class TestBurgerRegistrationTest:
         name = driver.find_element(*BurgerLocators.NAME_FIALD).send_keys('max')
 
         button_registration = driver.find_element(*BurgerLocators.BUTTON_REGISTRATION).click()
-        time.sleep(5)
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((BurgerLocators.BUTTON_LOGIN)))
 
         assert driver.current_url == 'https://stellarburgers.nomoreparties.site/login'
 
