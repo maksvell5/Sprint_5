@@ -1,0 +1,27 @@
+from selenium.webdriver.common.by import By
+
+class BurgerLocators:
+    EMAIL_FIALD=(By.XPATH,'//label[text()="Email"]/following::input[@class="text input__textfield text_type_main-default"][@name="name"]')
+    PASSWORD_FIALD=(By.XPATH,'//input[@class="text input__textfield text_type_main-default"][@name="Пароль"]')
+    NAME_FIALD=(By.XPATH,'//*[@id="root"]/div/main/div/form/fieldset[1]/div/div/input')
+    BUTTON_REGISTRATION = (By.XPATH, '//*[@id="root"]/div/main/div/form/button')
+    BUTTON_LOGIN_START_PAGE = (By.XPATH, '//button[@class="button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg"]')
+    EMAIL_FIALD_LOGIN = (By.XPATH, '//input[@class="text input__textfield text_type_main-default"][@name="name"]')
+    PASSWORD_FIALD_LOGIN = (By.XPATH, '//input[@class="text input__textfield text_type_main-default"][@name="Пароль"]')
+    BUTTON_LOGIN = (By.XPATH, '//button[@class="button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa"][text()="Войти"]')
+    BUTTON_PERSONAL_PAGE = (By.XPATH, '//nav/a[@class="AppHeader_header__link__3D_hX"]')
+    BUTTON_LOGOUT = (By.XPATH, '//button[@class="Account_button__14Yp3 text text_type_main-medium text_color_inactive"]')
+    BULKI = (By.XPATH, '//span[text()="Булки"]/parent::div')
+    SOUSE = (By.XPATH, '//span[text()="Соусы"]/parent::div')
+    NACHINKA = (By.XPATH, '//span[text()="Начинки"]/parent::div')
+    LOGIN_REGISTRATION_PAGE = (By.XPATH, '//a[@class="Auth_link__1fOlj"]')
+    REFRESH_PASSWORD = (By.XPATH, '//a[@class="Auth_link__1fOlj"][text()="Восстановить пароль"]')
+    LOGIN_REFRESH_PASSWORD = (By.XPATH, '//a[@class="Auth_link__1fOlj"]')
+    PERSONAL_PAGE_LOGIN = (By.XPATH, '//input[@class="text input__textfield text_type_main-default input__textfield-disabled"][@value="maax"]')
+    PERSONAL_PAGE_EMAIL = (By.XPATH, '//input[@class="text input__textfield text_type_main-default input__textfield-disabled"][@value="eroninmax8001@yandex.ru"]')
+    CONSTRUCTOR_BUTTON = (By.XPATH, '//li/a[@class="AppHeader_header__link__3D_hX"][@href="/"]')
+    MAKE_BURGER = (By.XPATH, '//h1[@class="text text_type_main-large mb-5 mt-10"]')
+    STELLAR_BURGER = (By.XPATH, '//div[@class="AppHeader_header__logo__2D0X2"]')
+    UNCORRECT_PASSWORD = (By.XPATH, '//p[@class="input__error text_type_main-default"]')
+    UNCORRECT_EMAIL = (By.XPATH, '//p[@class="input__error text_type_main-default"]')
+
